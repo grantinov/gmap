@@ -1,8 +1,8 @@
 """
 The objective for gmap is to run nmap type port scans from code.
 
- Project Name: grantNmap
- Developed by root
+ Project Name: gmap
+ Developed by grant.stokley
  Creation date 11/30/17
 
 Example usage(s):
