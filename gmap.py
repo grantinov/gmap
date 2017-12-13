@@ -7,7 +7,7 @@ The objective for gmap is to run nmap type port scans from code.
 
 Example usage(s):
 
-nm['127.0.0.1'].hostname()  # get one hostname for host 127.0.0.1, usualy the user record
+nm['127.0.0.1'].hostname()  # get one hostname for host 127.0.0.1, usually the user record
 nm['127.0.0.1'].hostnames()  # get list of hostnames for host 127.0.0.1 as a list of dict [{'name':'hostname1', 'type':'PTR'}, {'name':'hostname2', 'type':'user'}]
 nm['127.0.0.1'].hostname()  # get hostname for host 127.0.0.1
 nm['127.0.0.1'].state()  # get state of host 127.0.0.1 (up|down|unknown|skipped)
@@ -28,7 +28,7 @@ import nmap  # import nmap.py module
 
 nm = nmap.PortScanner()  # instantiate nmap.PortScanner object
 # TODO: create a variable to feed into this.
-nm.scan('10.224.40.197', '22-443')  # scan host 127.0.0.1, ports from 22 to 443
+nm.scan('172.16.36.16', '21-443')  # scan host 127.0.0.1, ports from 21 to 443
 nm.command_line()  # get command line used for the scan : nmap -oX - -p 22-443 127.0.0.1
 nm.scaninfo()  # get nmap scan information {'tcp': {'services': '22-443', 'method': 'connect'}}
 nm.all_hosts()  # get all hosts that were scanned
@@ -57,7 +57,7 @@ for host in nm.all_hosts():
     # If you want to do a pingsweep on network 192.168.1.0/24:
     # TODO: Advanced, get IP address of the NICs and automatically take a look around.
     # TODO: create variable to pass into this rather than hard coding it.
-    nm.scan(hosts='10.224.40.128/25', arguments='-n -sS -PE -PA21,23,80,135,139,3389')
+    nm.scan(hosts='172.16.36.16/30', arguments='-n -p 3389')
     hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
     for host, status in hosts_list:
         print('{0}:{1}'.format(host, status))
@@ -72,7 +72,7 @@ for host in nm.all_hosts():
         print(host, scan_result)
 
 
-    nma.scan(hosts='10.224.40.128/25', arguments='-sP', callback=callback_result)
+    nma.scan(hosts='172.16.36.16/30', arguments='-sP', callback=callback_result)
     while nma.still_scanning():
         print("Waiting ...")
         # Wait until some of the results have come back.

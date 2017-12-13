@@ -7,7 +7,7 @@ The objective for ip is to ...
  Time:    09:11
 
 
-Example usage()s):
+Example usage(s):
 
 """
 
